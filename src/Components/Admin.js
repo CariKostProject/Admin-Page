@@ -11,6 +11,7 @@ import Axios from "axios";
 import decode from "jwt-decode";
 import ChangeImg from "./Pages/ChangeImg";
 import Profile from "./Pages/Profile";
+import Booking from "./Pages/Booking";
 class Admin extends Component {
   constructor(props) {
     super(props);
@@ -82,6 +83,8 @@ class Admin extends Component {
             return <ChangeImg roomsData={this.state.roomsData} query={query} />;
           } else if (pages === "profile") {
             return <Profile userProfile={this.state.userProfile} />;
+          } else if (pages === "booking") {
+            return <Booking />;
           } else {
             return <Error404 />;
           }

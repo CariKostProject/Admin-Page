@@ -35,6 +35,12 @@ class Sidebar extends Component {
           >
             Profile
           </Link>
+          <Link
+            className={this.props.pages === "booking" ? "active" : ""}
+            to="?page=booking"
+          >
+            Booking
+          </Link>
           {/* <Link to="?page=zzz">Test Error Link</Link> */}
         </div>
       </div>

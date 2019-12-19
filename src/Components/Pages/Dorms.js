@@ -1,10 +1,31 @@
 import React, { Component } from "react";
 import "../Css/Dorms.css";
 import { Link } from "react-router-dom";
+import Axios from "axios";
+import Swal from "sweetalert2";
 
 class Dorms extends Component {
   formatNumber(num) {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+  }
+
+  deleteRoom(id) {
+    const id_room = id;
+    console.log(id_room);
+    Axios.delete(`https://ibukost.herokuapp.com/rooms/${id_room}`)
+      .then(res => {
+        {
+          Swal.fire("Delete Succes", "Room has been deleted", "success").then(
+            () => {
+              window.location.href = "/admin?page=dorms";
+            }
+          );
+          // console.log("rooms count", this.state.roomsData.length);
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   render() {
@@ -45,8 +66,13 @@ class Dorms extends Component {
                           {this.formatNumber(item.price)}
                         </td>
                         <td>
-                          <button className="button button2">Edit</button>
-                          <button className="button button3">Delete</button>
+                          {/* <button className="button button2">Edit</button> */}
+                          <button
+                            onClick={() => this.deleteRoom(item.id)}
+                            className="button button3"
+                          >
+                            Delete
+                          </button>
                         </td>
                       </tr>
                     );

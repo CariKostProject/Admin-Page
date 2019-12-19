@@ -15,9 +15,12 @@ class Profile extends Component {
     return (
       <div>
         <div className="content">
-          <h2 style={{ textAlign: "center" }}>User Profile</h2>
+          <h2 style={{ textAlign: "center" }}>Profile</h2>
           <div className="card">
-            <img src={this.props.userProfile.photo} style={{ width: "100%" }} />
+            <img
+              src={this.props.userProfile.photo}
+              style={{ width: "100", height: "50" }}
+            />
             <h1>{this.props.userProfile.fullname}</h1>
             <p className="title">{this.props.userProfile.email}</p>
             <p>{this.props.userProfile.region}</p>
